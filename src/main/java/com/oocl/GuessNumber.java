@@ -8,10 +8,10 @@ public class GuessNumber {
 
     public String generate4RandomNumber() {
         ArrayList<Integer> numberList = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
-        List<Integer> generatedNumber ;
+        List<Integer> generatedNumber;
         String combine = "";
         Collections.shuffle(numberList);
-        generatedNumber= numberList.subList(0,4);
+        generatedNumber = numberList.subList(0, 4);
 
         for (Integer number : generatedNumber) {
             combine += number.toString();
@@ -19,7 +19,7 @@ public class GuessNumber {
         return combine;
     }
 
-    public String getInputNumber(){
+    public String getInputNumber() {
         List<String> inputNo;
         String inputNumbers = "";
         String InputRight = "You entered string ";
@@ -36,24 +36,24 @@ public class GuessNumber {
             } else {
                 System.out.println(InputWrong);
             }
-        } while(inputNo.size() != inputNo.stream().distinct().count() || inputNo.size() != 4);
+        } while (inputNo.size() != inputNo.stream().distinct().count() || inputNo.size() != 4);
         return inputNumbers;
     }
 
-    public String compareInputWithRandom(String input, String generatedNo){
-        List<String> randomNoList ;
+    public String compareInputWithRandom(String input, String generatedNo) {
+        List<String> randomNoList;
         List<String> inputNoList;
         int countA = 0;
         int countB = 0;
-        List<String> getItCorrect =new ArrayList<>();
+        List<String> getItCorrect = new ArrayList<>();
         inputNoList = Arrays.asList(input.split(""));
         randomNoList = Arrays.asList(generatedNo.split(""));
         List<String> inputNo = new ArrayList<String>(inputNoList);
         List<String> randomNo = new ArrayList<String>(randomNoList);
-        for (int loopAllNo = 0; loopAllNo<randomNo.size() ; loopAllNo++){
-            if(randomNo.get(loopAllNo).equals(inputNo.get(loopAllNo))){
+        for (int loopAllNo = 0; loopAllNo < randomNo.size(); loopAllNo++) {
+            if (randomNo.get(loopAllNo).equals(inputNo.get(loopAllNo))) {
                 countA++;
-                System.out.println(randomNo.get(loopAllNo));
+                // System.out.println(randomNo.get(loopAllNo));
                 getItCorrect.add(randomNo.get(loopAllNo));
             }
         }
@@ -61,7 +61,7 @@ public class GuessNumber {
         randomNo.retainAll(inputNo);
         countB = randomNo.size();
 
-        return Integer.toString(countA)+"A"+Integer.toString(countB)+"B";
+        return Integer.toString(countA) + "A" + Integer.toString(countB) + "B";
 
     }
 }

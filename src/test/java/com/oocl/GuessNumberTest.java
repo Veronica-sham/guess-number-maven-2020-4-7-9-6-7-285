@@ -11,52 +11,64 @@ import java.util.List;
 public class GuessNumberTest {
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+
+        int attemptTime = 0;
+        String compareResult = "";
 
         GuessNumber guessNumber = new GuessNumber();
         String generatedNumber = guessNumber.generate4RandomNumber();
-        System.out.println("generated number: "+generatedNumber);
-        String userInput = guessNumber.getInputNumber();
-        String compareResult = guessNumber.compareInputWithRandom(userInput,generatedNumber);
-        System.out.println(compareResult);
+        System.out.println("generated number: " + generatedNumber);
+        do {
+            String userInput = guessNumber.getInputNumber();
+            compareResult = guessNumber.compareInputWithRandom(userInput, generatedNumber);
+            //System.out.println(compareResult);
+            if (compareResult.equals("4A0B")) {
+                System.out.println("you win");
+                break;
+            }
+            if (!compareResult.equals("4A0B") && attemptTime == 5) {
+                System.out.println("you lose");
+            }
+            attemptTime++;
 
-
+        } while (attemptTime <= 5);
     }
 
     @Test
-    public void should_return_xAxB(){
+    public void should_return_xAxB() {
         GuessNumber guessNumber = new GuessNumber();
         String generatedNumber = guessNumber.generate4RandomNumber();
-        System.out.println("generated number: "+generatedNumber);
+        System.out.println("generated number: " + generatedNumber);
         String SimulatedInput = "1379";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
         String userInput = guessNumber.getInputNumber();
-        String compareResult = guessNumber.compareInputWithRandom(userInput,generatedNumber);
-        Assert.assertEquals("xAxB",compareResult);
+        String compareResult = guessNumber.compareInputWithRandom(userInput, generatedNumber);
+        Assert.assertEquals("xAxB", compareResult);
 
     }
 
     @Test
-    public void should_return_Non_Repeated_Random_Number(){
+    public void should_return_Non_Repeated_Random_Number() {
         GuessNumber guessNumber = new GuessNumber();
         List<String> checkNumberList;
         String generatedNumber = guessNumber.generate4RandomNumber();
         Boolean nonRepeat = false;
         checkNumberList = Arrays.asList(generatedNumber.split(""));
-        if (checkNumberList.size() == checkNumberList.stream().distinct().count()){
+        if (checkNumberList.size() == checkNumberList.stream().distinct().count()) {
             nonRepeat = true;
         }
         Assert.assertEquals(true, nonRepeat);
     }
 
     @Test
-    public void should_Confirm_Input_From_User_Is_Right(){
+    public void should_Confirm_Input_From_User_Is_Right() {
         GuessNumber guessNumber = new GuessNumber();
         String SimulatedInput = "1379";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
-        Assert.assertEquals("1379",guessNumber.getInputNumber());
+        Assert.assertEquals("1379", guessNumber.getInputNumber());
     }
 
 }
