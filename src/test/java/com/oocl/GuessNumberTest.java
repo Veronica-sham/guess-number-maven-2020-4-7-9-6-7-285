@@ -15,22 +15,27 @@ public class GuessNumberTest {
 
         GuessNumber guessNumber = new GuessNumber();
         String generatedNumber = guessNumber.generate4RandomNumber();
-        System.out.println(generatedNumber);
-        System.out.println(guessNumber.getInputNumber());
+        System.out.println("generated number: "+generatedNumber);
+        String userInput = guessNumber.getInputNumber();
+        String compareResult = guessNumber.compareInputWithRandom(userInput,generatedNumber);
+        System.out.println(compareResult);
 
 
     }
 
-  /*  @Test
-    public void return_xAxB(){
-        //given
+    @Test
+    public void should_return_xAxB(){
         GuessNumber guessNumber = new GuessNumber();
-        //when
-        String result = guessNumber.startTheGameWithInput(1);
-        //then
-        Assert.assertEquals("hi", result);
+        String generatedNumber = guessNumber.generate4RandomNumber();
+        System.out.println("generated number: "+generatedNumber);
+        String SimulatedInput = "1379";
+        InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
+        System.setIn(in);
+        String userInput = guessNumber.getInputNumber();
+        String compareResult = guessNumber.compareInputWithRandom(userInput,generatedNumber);
+        Assert.assertEquals("xAxB",compareResult);
 
-    } */
+    }
 
     @Test
     public void should_return_Non_Repeated_Random_Number(){
@@ -51,7 +56,7 @@ public class GuessNumberTest {
         String SimulatedInput = "1379";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
-        Assert.assertEquals(true,guessNumber.getInputNumber());
+        Assert.assertEquals("1379",guessNumber.getInputNumber());
     }
 
 }

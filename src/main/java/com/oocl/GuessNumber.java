@@ -6,12 +6,6 @@ import java.util.stream.Collectors;
 public class GuessNumber {
 
 
-
-    public String startTheGameWithInput(int number){
-        return "hi";
-
-    }
-
     public String generate4RandomNumber() {
         ArrayList<Integer> numberList = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
         List<Integer> generatedNumber ;
@@ -25,30 +19,49 @@ public class GuessNumber {
         return combine;
     }
 
-    public Boolean getInputNumber(){
+    public String getInputNumber(){
         List<String> inputNo;
-        Boolean isInputRight = false;
+        String inputNumbers = "";
         String InputRight = "You entered string ";
         String InputWrong = "Wrong Input, Input again";
         do {
             System.out.println("Input 4 numbers in the format of xxxx(e.g.1234): ");
             Scanner consoleInput = new Scanner(System.in);
-            String inputNumber = consoleInput.nextLine();
-            inputNo = Arrays.asList(inputNumber.split(""));
+            String userinputNumber = consoleInput.nextLine();
+            inputNo = Arrays.asList(userinputNumber.split(""));
             if (inputNo.size() == inputNo.stream().distinct().count() && inputNo.size() == 4) {
-                InputRight = InputRight + inputNumber;
+                InputRight = InputRight + userinputNumber;
                 System.out.println(InputRight);
-                isInputRight = true;
+                inputNumbers = userinputNumber;
             } else {
                 System.out.println(InputWrong);
             }
         } while(inputNo.size() != inputNo.stream().distinct().count() || inputNo.size() != 4);
-        return isInputRight;
+        return inputNumbers;
     }
 
-    public void compareInputValid(String input){
-        List<String> inputNo;
-        inputNo = Arrays.asList(input.split(""));
+    public String compareInputWithRandom(String input, String generatedNo){
+        List<String> randomNoList ;
+        List<String> inputNoList;
+        int countA = 0;
+        int countB = 0;
+        List<String> getItCorrect =new ArrayList<>();
+        inputNoList = Arrays.asList(input.split(""));
+        randomNoList = Arrays.asList(generatedNo.split(""));
+        List<String> inputNo = new ArrayList<String>(inputNoList);
+        List<String> randomNo = new ArrayList<String>(randomNoList);
+        for (int loopAllNo = 0; loopAllNo<randomNo.size() ; loopAllNo++){
+            if(randomNo.get(loopAllNo).equals(inputNo.get(loopAllNo))){
+                countA++;
+                System.out.println(randomNo.get(loopAllNo));
+                getItCorrect.add(randomNo.get(loopAllNo));
+            }
+        }
+        inputNo.removeAll(getItCorrect);
+        randomNo.retainAll(inputNo);
+        countB = randomNo.size();
+
+        return Integer.toString(countA)+"A"+Integer.toString(countB)+"B";
 
     }
 }
