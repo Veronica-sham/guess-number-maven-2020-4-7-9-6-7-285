@@ -25,7 +25,7 @@ public class GuessNumber {
         String InputRight = "You entered string ";
         String InputWrong = "Wrong Input, Input again";
         do {
-            System.out.println("Input 4 numbers in the format of xxxx(e.g.1234): ");
+            System.out.println(" Input 4 numbers in the format of xxxx(e.g.1234): ");
             Scanner consoleInput = new Scanner(System.in);
             String userinputNumber = consoleInput.nextLine();
             inputNo = Arrays.asList(userinputNumber.split(""));
@@ -53,7 +53,6 @@ public class GuessNumber {
         for (int loopAllNo = 0; loopAllNo < randomNo.size(); loopAllNo++) {
             if (randomNo.get(loopAllNo).equals(inputNo.get(loopAllNo))) {
                 countA++;
-                // System.out.println(randomNo.get(loopAllNo));
                 getItCorrect.add(randomNo.get(loopAllNo));
             }
         }
@@ -61,7 +60,7 @@ public class GuessNumber {
         randomNo.retainAll(inputNo);
         countB = randomNo.size();
 
-        return Integer.toString(countA) + "A" + Integer.toString(countB) + "B";
+        return countA + "A" + countB + "B";
 
     }
 }

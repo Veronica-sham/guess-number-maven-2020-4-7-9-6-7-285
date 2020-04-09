@@ -18,17 +18,17 @@ public class GuessNumberTest {
 
         GuessNumber guessNumber = new GuessNumber();
         String generatedNumber = guessNumber.generate4RandomNumber();
-        System.out.println("generated number: " + generatedNumber);
+        //System.out.println("generated number: " + generatedNumber);
         do {
             String userInput = guessNumber.getInputNumber();
             compareResult = guessNumber.compareInputWithRandom(userInput, generatedNumber);
-            //System.out.println(compareResult);
+            System.out.println(compareResult);
             if (compareResult.equals("4A0B")) {
                 System.out.println("you win");
                 break;
             }
             if (!compareResult.equals("4A0B") && attemptTime == 5) {
-                System.out.println("you lose");
+                System.out.println("you lose. The answer is : "+generatedNumber);
             }
             attemptTime++;
 
@@ -37,6 +37,7 @@ public class GuessNumberTest {
 
     @Test
     public void should_return_xAxB() {
+        Boolean isXAXB = false;
         GuessNumber guessNumber = new GuessNumber();
         String generatedNumber = guessNumber.generate4RandomNumber();
         System.out.println("generated number: " + generatedNumber);
@@ -45,8 +46,10 @@ public class GuessNumberTest {
         System.setIn(in);
         String userInput = guessNumber.getInputNumber();
         String compareResult = guessNumber.compareInputWithRandom(userInput, generatedNumber);
-        Assert.assertEquals("xAxB", compareResult);
-
+        if(compareResult.regionMatches(1,"A",0,0)&&compareResult.regionMatches(3,"B",0,0)){
+            isXAXB = true;
+        }
+        Assert.assertEquals(true, isXAXB);
     }
 
     @Test
