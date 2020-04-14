@@ -22,13 +22,13 @@ public class GenerateRandomNumberTest {
     public void should_return_xAxB() {
         Boolean isXAXB = false;
         GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
-        InputNumberHandler inputNumberHandler = new InputNumberHandler();
+        InputHandler inputHandler = new InputHandler();
         String generatedNumber = generateRandomNumber.generate4RandomNumber();
         System.out.println("generated number: " + generatedNumber);
         String SimulatedInput = "1379";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
-        String userInput = inputNumberHandler.getInputNumber();
+        String userInput = inputHandler.getUserInput();
         String compareResult = generateRandomNumber.compareInputWithRandom(userInput, generatedNumber);
         if (compareResult.regionMatches(1, "A", 0, 0) && compareResult.regionMatches(3, "B", 0, 0)) {
             isXAXB = true;
@@ -52,11 +52,11 @@ public class GenerateRandomNumberTest {
     @Test
     public void should_Confirm_Input_From_User_Is_Right() {
         GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
-        InputNumberHandler inputNumberHandler = new InputNumberHandler();
+        InputHandler inputHandler = new InputHandler();
         String SimulatedInput = "1379";
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
-        Assert.assertEquals("1379", inputNumberHandler.getInputNumber());
+        Assert.assertEquals("1379", inputHandler.getUserInput());
     }
 
 }

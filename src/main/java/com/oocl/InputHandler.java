@@ -4,9 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class InputNumberHandler {
+public class InputHandler {
 
-    public String getInputNumber() {
+    private String inputNumbers;
+
+    public void validateInput() {
         List<String> inputNo;
         String inputNumbers = "";
         String InputRight = "You entered string ";
@@ -24,6 +26,11 @@ public class InputNumberHandler {
                 System.out.println(InputWrong);
             }
         } while (inputNo.size() != inputNo.stream().distinct().count() || inputNo.size() != 4);
-        return inputNumbers;
+        this.inputNumbers = inputNumbers;
+    }
+
+    public String getUserInput(){
+        validateInput();
+        return this.inputNumbers;
     }
 }

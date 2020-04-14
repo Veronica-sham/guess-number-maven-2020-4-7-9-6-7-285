@@ -7,11 +7,11 @@ public class StartGame {
         String compareResult = "";
 
         GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
-        InputNumberHandler inputNumberHandler = new InputNumberHandler();
+        InputHandler inputHandler = new InputHandler();
         String generatedNumber = generateRandomNumber.generate4RandomNumber();
-        //System.out.println("generated number: " + generatedNumber);
+        System.out.println("generated number: " + generatedNumber);
         do {
-            String userInput = inputNumberHandler.getInputNumber();
+            String userInput = inputHandler.getUserInput();
             compareResult = generateRandomNumber.compareInputWithRandom(userInput, generatedNumber);
             System.out.println(compareResult);
             if (compareResult.equals("4A0B")) {

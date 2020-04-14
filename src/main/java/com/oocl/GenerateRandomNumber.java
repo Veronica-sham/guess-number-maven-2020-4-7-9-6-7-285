@@ -5,6 +5,8 @@ import java.util.*;
 public class GenerateRandomNumber {
 
 
+    public static final String SPLIT_WORDS = "";
+
     public String generate4RandomNumber() {
         ArrayList<Integer> numberList = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
         List<Integer> generatedNumber;
@@ -26,8 +28,8 @@ public class GenerateRandomNumber {
         int countA = 0;
         int countB = 0;
         List<String> getItCorrect = new ArrayList<>();
-        inputNoList = Arrays.asList(input.split(""));
-        randomNoList = Arrays.asList(generatedNo.split(""));
+        inputNoList = Arrays.asList(input.split(SPLIT_WORDS));
+        randomNoList = Arrays.asList(generatedNo.split(SPLIT_WORDS));
         List<String> inputNo = new ArrayList<String>(inputNoList);
         List<String> randomNo = new ArrayList<String>(randomNoList);
         for (int loopAllNo = 0; loopAllNo < randomNo.size(); loopAllNo++) {
