@@ -22,6 +22,7 @@ public class GenerateRandomNumberTest {
     public void should_return_xAxB() {
         Boolean isXAXB = false;
         GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
+        CompareInputWithRandomNumber compareInputWithRandomNumber = new CompareInputWithRandomNumber();
         InputHandler inputHandler = new InputHandler();
         String generatedNumber = generateRandomNumber.generate4RandomNumber();
         System.out.println("generated number: " + generatedNumber);
@@ -29,7 +30,7 @@ public class GenerateRandomNumberTest {
         InputStream in = new ByteArrayInputStream(SimulatedInput.getBytes());
         System.setIn(in);
         String userInput = inputHandler.getUserInput();
-        String compareResult = generateRandomNumber.compareInputWithRandom(userInput, generatedNumber);
+        String compareResult = compareInputWithRandomNumber.compareInputWithRandom(userInput, generatedNumber);
         if (compareResult.regionMatches(1, "A", 0, 0) && compareResult.regionMatches(3, "B", 0, 0)) {
             isXAXB = true;
         }

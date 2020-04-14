@@ -8,11 +8,12 @@ public class StartGame {
 
         GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
         InputHandler inputHandler = new InputHandler();
+        CompareInputWithRandomNumber compareInputWithRandomNumber = new CompareInputWithRandomNumber();
         String generatedNumber = generateRandomNumber.generate4RandomNumber();
         System.out.println("generated number: " + generatedNumber);
         do {
             String userInput = inputHandler.getUserInput();
-            compareResult = generateRandomNumber.compareInputWithRandom(userInput, generatedNumber);
+            compareResult = compareInputWithRandomNumber.compareInputWithRandom(userInput, generatedNumber);
             System.out.println(compareResult);
             if (compareResult.equals("4A0B")) {
                 System.out.println("you win");
