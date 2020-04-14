@@ -6,12 +6,13 @@ public class StartGame {
         int attemptTime = 0;
         String compareResult = "";
 
-        GuessNumber guessNumber = new GuessNumber();
-        String generatedNumber = guessNumber.generate4RandomNumber();
+        GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
+        InputNumberHandler inputNumberHandler = new InputNumberHandler();
+        String generatedNumber = generateRandomNumber.generate4RandomNumber();
         //System.out.println("generated number: " + generatedNumber);
         do {
-            String userInput = guessNumber.getInputNumber();
-            compareResult = guessNumber.compareInputWithRandom(userInput, generatedNumber);
+            String userInput = inputNumberHandler.getInputNumber();
+            compareResult = generateRandomNumber.compareInputWithRandom(userInput, generatedNumber);
             System.out.println(compareResult);
             if (compareResult.equals("4A0B")) {
                 System.out.println("you win");
