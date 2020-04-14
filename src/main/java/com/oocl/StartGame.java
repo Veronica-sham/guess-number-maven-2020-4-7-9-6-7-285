@@ -12,7 +12,6 @@ public class StartGame {
         InputHandler inputHandler = new InputHandler();
         CompareInputWithRandomNumber compareInputWithRandomNumber = new CompareInputWithRandomNumber();
         String generatedNumber = generateRandomNumber.generate4RandomNumber();
-        System.out.println("generated number: " + generatedNumber);
         do {
             String userInput = inputHandler.getUserInput();
             comparedResult = compareInputWithRandomNumber.compareInputWithRandom(userInput, generatedNumber);
