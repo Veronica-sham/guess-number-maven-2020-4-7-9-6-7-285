@@ -7,29 +7,32 @@ import java.util.Scanner;
 public class InputHandler {
 
     private String inputNumbers;
+    public static final String SPLIT_WORDS = "";
 
     public void validateInput() {
         List<String> inputNo;
         String inputNumbers = "";
-        String InputRight = "You entered string ";
-        String InputWrong = "Wrong Input, Input again";
+        String inputRightMessage = "You entered string ";
+        String inputWrongMessage = "Wrong Input, Input again";
+        String initialMessage = " Input 4 numbers in the format of xxxx(e.g.1234): ";
+        int validInputLength = 4;
         do {
-            System.out.println(" Input 4 numbers in the format of xxxx(e.g.1234): ");
+            System.out.println(initialMessage);
             Scanner consoleInput = new Scanner(System.in);
             String userInputNumber = consoleInput.nextLine();
-            inputNo = Arrays.asList(userInputNumber.split(""));
-            if (inputNo.size() == inputNo.stream().distinct().count() && inputNo.size() == 4) {
-                InputRight = InputRight + userInputNumber;
-                System.out.println(InputRight);
+            inputNo = Arrays.asList(userInputNumber.split(SPLIT_WORDS));
+            if (inputNo.size() == inputNo.stream().distinct().count() && inputNo.size() == validInputLength) {
+                inputRightMessage = inputRightMessage + userInputNumber;
+                System.out.println(inputRightMessage);
                 inputNumbers = userInputNumber;
             } else {
-                System.out.println(InputWrong);
+                System.out.println(inputWrongMessage);
             }
-        } while (inputNo.size() != inputNo.stream().distinct().count() || inputNo.size() != 4);
+        } while (inputNo.size() != inputNo.stream().distinct().count() || inputNo.size() != validInputLength);
         this.inputNumbers = inputNumbers;
     }
 
-    public String getUserInput(){
+    public String getUserInput() {
         validateInput();
         return this.inputNumbers;
     }
