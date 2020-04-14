@@ -1,7 +1,6 @@
 package com.oocl;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class GuessNumber {
 
