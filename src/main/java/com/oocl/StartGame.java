@@ -4,7 +4,9 @@ public class StartGame {
 
     public void startingTheGame() {
         int attemptTime = 0;
-        String compareResult = "";
+        String comparedResult = "";
+        String allCorrect = "4A0B";
+        int noChanceLeft = 5;
 
         GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
         InputHandler inputHandler = new InputHandler();
@@ -13,13 +15,13 @@ public class StartGame {
         System.out.println("generated number: " + generatedNumber);
         do {
             String userInput = inputHandler.getUserInput();
-            compareResult = compareInputWithRandomNumber.compareInputWithRandom(userInput, generatedNumber);
-            System.out.println(compareResult);
-            if (compareResult.equals("4A0B")) {
+            comparedResult = compareInputWithRandomNumber.compareInputWithRandom(userInput, generatedNumber);
+            System.out.println(comparedResult);
+            if (comparedResult.equals(allCorrect)) {
                 System.out.println("you win");
                 break;
             }
-            if (!compareResult.equals("4A0B") && attemptTime == 5) {
+            if (!comparedResult.equals(allCorrect) && attemptTime == noChanceLeft) {
                 System.out.println("you lose. The answer is : " + generatedNumber);
             }
             attemptTime++;
