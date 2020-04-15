@@ -7,13 +7,13 @@ import java.util.List;
 public class CompareInputWithRandomNumber {
 
     public static final String SPLIT_WORDS = "";
-
+// No -->Number rename
     public String compareInputWithRandom(String input, String generatedNo) {
         List<String> randomNoList;
         List<String> inputNoList;
         int countA = 0;
         int countB = 0;
-        List<String> getItCorrect = new ArrayList<>();
+        List<String> getItCorrect = new ArrayList<>(); //rename to getCorrectNumber
         inputNoList = Arrays.asList(input.split(SPLIT_WORDS));
         randomNoList = Arrays.asList(generatedNo.split(SPLIT_WORDS));
         List<String> inputNo = new ArrayList<String>(inputNoList);
@@ -28,7 +28,7 @@ public class CompareInputWithRandomNumber {
         randomNo.retainAll(inputNo);
         countB = randomNo.size();
 
-        return countA + "A" + countB + "B";
+        return countA + "A" + countB + "B"; //constant name, string format
 
     }
 }
