@@ -13,7 +13,7 @@ public class InputHandler {
     private String inputNumbers;
 
     public void validateInput() {
-        List<String> inputNo;
+        List<String> inputNumber;
         String inputNumbers = "";
         String inputRightMessage = "You entered string ";
         int inputLength;
@@ -24,9 +24,9 @@ public class InputHandler {
             System.out.println(INITIAL_MESSAGE);
 
             String userInputNumber = consoleInput.nextLine();
-            inputNo = Arrays.asList(userInputNumber.split(SPLIT_WORDS));
-            inputLength = inputNo.size();
-            distinctWordsCountInInput = inputNo.stream().distinct().count();
+            inputNumber = Arrays.asList(userInputNumber.split(SPLIT_WORDS));
+            inputLength = inputNumber.size();
+            distinctWordsCountInInput = inputNumber.stream().distinct().count();
             if (inputLength == distinctWordsCountInInput && inputLength == VALID_INPUT_LENGTH) {
                 inputRightMessage = inputRightMessage + userInputNumber;
                 System.out.println(inputRightMessage);
